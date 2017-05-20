@@ -1,0 +1,22 @@
+{
+  "name": "hcjs-react-site-backend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.15.2",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "start": "babel-node src/server.js",
+    "daemon": "nodemon src/server.js --exec babel-node",
+    "build": "babel src -d dist",
+    "serve": "node dist/server.js"
+  }
+}
