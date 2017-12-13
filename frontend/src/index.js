@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory} from 'react-router';
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom';
 import App from './components/App';
 import './index.css';
 import { Provider } from 'react-redux';
@@ -10,7 +14,7 @@ const StoreInstance = Store();
 
 ReactDOM.render(
     <Provider store={StoreInstance}>
-        <Router history={browserHistory}>
+        <Router>
             <Route path="/" component={App}/>
         </Router>
     </Provider>,

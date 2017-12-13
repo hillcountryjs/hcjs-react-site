@@ -11,13 +11,13 @@ class Events extends Component {
         this.state = {
             events: []
         };
-        this._rsvp = this._rsvp.bind(this);
     }
     componentDidMount(){
         const req_events_url = `${window.location.origin}/api/events`
         fetch(req_events_url
         ).then((res)=>{
-            return res.json()
+            console.log(res);
+            return res.json();
         }).then((json)=>{
             this.setState({events: json});
         })
@@ -27,7 +27,7 @@ class Events extends Component {
         let event_list;
         if(Object.keys(events).length > 1){
             event_list = events.map((item, index)=>{
-                return(<Event {...item} index={index} key={index} rsvp={this._rsvp}/>);
+                return(<Event {...item} index={index} key={index} />);
             });
         } else {
             event_list = "Well this is awkward. Contact your Organizers, this isn't supposed to happen.";
@@ -38,15 +38,6 @@ class Events extends Component {
                 {event_list}
             </div>
         );
-    }
-    _rsvp(group, id, count){
-        const req_rsvp_url= `https://api.meetup.com/${group}/events/${id}/rsvps?access_token=${this.props.token}`
-        let data = {
-            "count": count,
-            "response": "yes"
-        };
-        post_rsvp(req_rsvp_url, data);
-        console.log(group + " " + id);
     }
 }
 
